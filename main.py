@@ -1,7 +1,7 @@
 from contextlib import asynccontextmanager, contextmanager
 from fastapi import FastAPI
 from config.database import Base, engine
-
+from controller.auth_controller import router as auth_router
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     Base.metadata.create_all(engine)
@@ -13,7 +13,7 @@ app = FastAPI(
     vcersion="0.1",
     lifespan=lifespan
 )
-
+app.include_router(auth_router)
 # Definimos una ruta para la raíz de nuestra API
 @app.get("/")
 async def bienvenida():

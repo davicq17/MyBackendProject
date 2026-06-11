@@ -9,7 +9,7 @@ class UserRepository:
         return self.db.query(User).filter(User.email == email).first()
     
     def create(self, user: User) -> User:
-        self.db.add(User)
+        self.db.add(user)
         self.db.commit()
         self.db.refresh(user)
         return user

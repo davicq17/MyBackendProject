@@ -11,7 +11,7 @@ class AuthService:
         self.user_repository = UserRepository(db=db)
 
     def register(self, user: UserCreate):
-        existing_user = UserRepository(self.db).get_by_email(user.email)
+        existing_user = self.user_repository.get_by_email(user.email)
         if existing_user:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
