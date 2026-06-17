@@ -14,7 +14,7 @@ class TaskResponse(BaseModel):
     priority: str
     owner_user: int 
     created_at: datetime
-    update_at: datetime
+    updated_at: datetime
 
     model_config = {"from_attributes": True}
 
