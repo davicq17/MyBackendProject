@@ -6,6 +6,14 @@ class TaskCreate(BaseModel):
     description: str | None = None
     priority: str
 
+class TaskListResponse(BaseModel):
+    id: int
+    title: str
+    status: str
+    priority: str
+
+    model_config = {"from_attributes": True}
+
 class TaskResponse(BaseModel):
     id: int
     title: str
@@ -19,7 +27,7 @@ class TaskResponse(BaseModel):
     model_config = {"from_attributes": True}
 
 class TaskUpdate(BaseModel):
-    title: str
-    description: str
-    status: str
-    priority: str
+    title: str | None = None
+    description: str | None = None
+    status: str | None = None
+    priority: str | None = None
